@@ -19,7 +19,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 run: all
 	./$(BIN)
 
+demo: all
+	./$(BIN) --demo
+
 clean:
 	rm -rf $(OBJDIR) $(BIN) $(BIN).exe
 
-.PHONY: all run clean
+.PHONY: all run demo clean

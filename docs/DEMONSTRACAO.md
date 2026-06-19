@@ -5,9 +5,33 @@ os valores estão prontos a introduzir e os resultados esperados estão assinala
 
 ---
 
-## 1. Preparação (antes de começar)
+## 0. Atalho: arrancar já com dados de exemplo
 
-Compilar e arrancar a aplicação:
+A forma mais rápida de demonstrar é usar o modo de dados de exemplo (seed), que arranca com
+3 viaturas, 2 motoristas e 3 corridas já carregadas:
+
+```
+make demo
+```
+
+ou, comando único (compila e arranca em modo demonstração):
+
+```
+gcc -std=c11 -Wall -Wextra -Iinclude src/*.c -o taxi-control-system && ./taxi-control-system --demo
+```
+
+Neste modo podes saltar para o **Passo 5 (relatórios)** e mostrar logo o resultado:
+3 viaturas (2 disponíveis, 1 em manutenção), 2 motoristas, 3 corridas e receita total **27.39**.
+Os dados de demonstração ficam num ficheiro próprio (`data/taxi-demo.dat`) e não afetam os
+dados reais.
+
+Se preferires demonstrar a inserção manual passo a passo, segue a partir da secção 1.
+
+---
+
+## 1. Preparação (inserção manual)
+
+Compilar e arrancar a aplicação sem dados de exemplo:
 
 ```
 make

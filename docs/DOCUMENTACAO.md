@@ -138,6 +138,7 @@ taxi-control-system/
 - **`persistencia.h`** — Declara as funções de gravação e leitura dos dados em ficheiro.
 - **`util.h`** — Declara os utilitários de entrada de dados, data/hora e ecrã.
 - **`ui.h`** — Declara o ponto de entrada da interface (menus).
+- **`seed.h`** — Declara a função que povoa o sistema com dados de exemplo.
 
 ### 5.2. Pasta `src/` — implementação
 
@@ -161,6 +162,8 @@ taxi-control-system/
   da data/hora atual e limpeza/pausa do ecrã.
 - **`ui.c`** — Constrói os menus e submenus, recolhe os dados do utilizador, chama as funções dos
   módulos e apresenta os resultados. É a única camada que comunica com o utilizador.
+- **`seed.c`** — Povoa o sistema com dados de exemplo (3 viaturas, 2 motoristas e 3 corridas),
+  reutilizando as funções dos módulos. É usado no modo de demonstração (`--demo`).
 
 ### 5.3. Outros ficheiros
 
@@ -194,7 +197,28 @@ A estrutura `Sistema` agrega arrays destas três entidades e os contadores de id
 
 ---
 
-## 8. Conceitos de C demonstrados
+## 8. Demonstração com dados de exemplo
+
+Para uma demonstração imediata, o programa aceita o argumento `--demo`, que arranca já com dados
+de exemplo carregados (3 viaturas — uma em manutenção —, 2 motoristas e 3 corridas). Os dados de
+demonstração são gravados num ficheiro separado (`data/taxi-demo.dat`), sem afetar os dados reais.
+
+```
+make demo
+```
+
+ou, comando único:
+
+```
+gcc -std=c11 -Wall -Wextra -Iinclude src/*.c -o taxi-control-system && ./taxi-control-system --demo
+```
+
+Neste modo, o Resumo Geral apresenta 3 viaturas (2 disponíveis, 1 em manutenção), 2 motoristas,
+3 corridas e receita total de 27,39.
+
+---
+
+## 9. Conceitos de C demonstrados
 
 - Estruturas (`struct`) e tipos enumerados (`enum`).
 - Arrays de estruturas e gestão de coleções.
